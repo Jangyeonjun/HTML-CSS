@@ -1,0 +1,30 @@
+<!DOCTYPE html> 이 문서는 html5다.
+<html lang="ko ">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html</title>
+</head>
+
+<body>
+    <!-- 블록 요소 -->
+    <h6>안녕하세요</h6>
+    <h2>안녕하세요</h2>
+
+
+    <!-- 인라인 요소 -->
+    <span>안녕하세요</span>
+    <span>안녕하세요~~</span>
+
+    <!-- 줄내림 -->
+    <br>
+
+    <!-- div태그 -->
+    <div class="">
+        <h6>안녕하세요</h6>
+        <h2>안녕하세요</h2>
+    </div>
+
+</body>
+
+</html>
