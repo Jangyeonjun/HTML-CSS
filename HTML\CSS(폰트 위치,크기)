@@ -1,0 +1,72 @@
+<body>
+    <!-- fontFamily -->
+    <!-- fontFamily -->
+    <div class="fontFamily">
+        <h2>제목</h2>
+        폰트 <span>fontFamily</span>
+    </div>
+    <DIv>
+        <P></P>
+    </DIv>
+
+    <div class="TL">왼쪽</div>
+    <div class="TC">가운데</div>
+    <div class="TR">오른쪽 정렬</div>
+
+
+</body>
+
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------------------
+* {
+    font-family: "Georgia", "함초롱바탕";
+}
+
+
+
+
+
+.fontFamily {
+    font-family: "Georgia", "함초롱바탕";
+    color: crimson;
+}
+
+.fontFamily span {
+    color: dodgerblue;
+    font-size: 2em;
+    font-style: italic;
+
+}
+
+/* 박스 */
+.TL {
+    text-align: left;
+    height: 100px;
+    line-height: 100px;
+    line-height: 100px;
+    background-color: #33333366;
+    margin: 10PX;
+    /* border 굵기-선동휴-색깔 */
+    border: 2px solid black;
+}
+
+.TC {
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    background-color: #33333344;
+    margin: 10PX;
+    /* border 굵기-선동휴-색깔 */
+    border: 2px solid black;
+}
+
+.TR {
+    text-align: right;
+    height: 100px;
+    line-height: 100px;
+    background-color: #33333322;
+    margin: 10PX;
+    /* border 굵기-선동휴-색깔 */
+    border: 2px solid black;
+}
