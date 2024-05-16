@@ -1,0 +1,40 @@
+<!DOCTYPE html> 이 문서는 html5다.
+<html lang="ko ">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html</title>
+</head>
+
+<body>
+    <a href="https://github.com/jnagyeonjun/yeon/tree/main">
+
+        <h1>Lorem Ipsum</h1>
+    </a>
+    <div>
+        <h2>소프트웨어개발과</h2>
+        <ul>
+            <li>Java</li>
+            <li>orale(DB)</li>
+            <li>Wed(html,cssm,js)</li>
+            <li>Tomcat(Sever)</li>
+
+        </ul>
+
+    </div>
+
+    <div>
+        <h2>소프트웨어개발과</h2>
+        <ol>
+            <li>Java</li>
+            <li>orale(DB)</li>
+            <li>Wed(html,cssm,js)</li>
+            <li>Tomcat(Sever)</li>
+
+        </ol>
+
+    </div>
+
+</body>
+
+</html>
