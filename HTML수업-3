@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html</title>
+</head>
+
+<body>
+    <div>
+        <p>
+            안녕하세요 <br>
+            안녕하세요 <br>
+            <strong>안녕하세요</strong> <br>
+            <em>안녕하세요</em> <br>
+
+
+
+
+        </p>
+    </div>
+    <div>
+
+
+
+
+        <h2>인사</h2>
+        <ol>
+            <li> <a href="https://www.naver.com/" target="_blank" title="하이">tlqkf</a> </li>
+            <li>하이</li>
+            <li>하이</li>
+        </ol>
+
+    </div>
+    <a href="https://discord.com/channels/1109820236972179518/1109820237576142881" target="_blank">
+        <img src="윤건이.jpg" alt="윤건" style="width: 200px;">
+
+    </a>
+
+    <form action="a.html" target="_blank">
+        아이디 : <input type="text" name="id">
+        <br>
+        비밀번호 : <input type="password" name="pw">
+        <br>
+        <input type="submit" value="로그인">
+    </form>
+
+</body>
+
+</html>
