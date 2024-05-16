@@ -1,0 +1,122 @@
+html
+HTML
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="s.css">
+</head>
+
+<body>
+    <!-- .pos>.a+.b+.c -->
+    <div class="position">
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
+    </div>
+
+    <div class="float">
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
+    </div>
+
+    <div class="display">
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+-------------------------------------------------------------------------------------------------------------
+css
+.position div {
+    width: 100px;
+    height: 100px;
+
+}
+
+.float div {
+    width: 100px;
+    height: 100px;
+}
+
+.display div {
+    width: 100px;
+    height: 100px;
+
+}
+
+.a {
+    background-color: rgb(222, 135, 135);
+}
+
+.b {
+    background-color: rgb(166, 199, 236);
+}
+
+.c {
+    background-color: rgb(238, 177, 230);
+}
+
+/* .position 주기 시작*/
+.position .a {
+    position: absolute;
+    left: 0;
+}
+
+.position .b {
+    position: absolute;
+    left: 100px;
+}
+
+
+.position .c {
+    position: absolute;
+    left: 200px;
+}
+
+.position {
+    position: relative;
+    height: 100px;
+}
+
+/* .float */
+.float .a {
+    float: left;
+    height: 100px;
+}
+
+.float .b {
+    float: left;
+    height: 100px;
+}
+
+.float .c {
+    float: left;
+    height: 100px;
+}
+
+/* .display */
+.display .a {
+    display: inline-block;
+
+}
+
+.display .b {
+    display: inline-block;
+
+}
+
+.display .c {
+    display: inline-block;
+
+}
