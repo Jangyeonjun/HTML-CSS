@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+.top {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    background-color: black;
+    height: 80px;
+}
+
+.top img {
+    margin-right: auto; /* 이미지를 왼쪽으로 밀어내기 위해 추가 */
+}
+
+button {
+    margin-left: auto; /* 버튼을 오른쪽으로 밀어내기 위해 추가 */
+    width: 240px;
+    height: 80px;
+    color: #fff;
+    background: #d8ea10;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background: rgba(0, 79, 255, 0.9);
+}
+
+.header {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #595959;
+    text-align: center;
+}
+.main {
+    list-style: none;
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+}
+.main li {
+    margin: 0 10px; /* a 태그 간격을 줄이기 위해 li 태그의 margin을 조정 */
+    position: relative;
+    width: 150px; /* li 태그의 너비 설정 */
+    height: 40px; /* li 태그의 높이 설정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main li a {
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+}
+.main li:hover .sub {
+    display: block;
+}
+.sub {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    display: none;
+    position: absolute;
+    top: 40px; /* 부모 li 태그의 높이와 일치시킴 */
+    left: 0;
+    width: 150px; /* 부모 li 태그의 너비와 일치시킴 */
+}
+.sub li {
+    padding: 5px 10px;
+    margin: 0; /* li 태그 아래의 공백을 없애기 위해 margin을 0으로 설정 */
+}
+.sub li a {
+    color: white;
+    text-decoration: none;
+}
+.sub li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

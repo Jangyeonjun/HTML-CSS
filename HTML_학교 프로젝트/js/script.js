@@ -1,10 +1,15 @@
-$(".main-menu>li").mouseover(function(){
+$(".main>li").mouseover(function(){
 	$(this).children(".sub").stop().slideDown();
 });
-$(".main-menu>li").mouseleave(function(){
+$(".main>li").mouseleave(function(){
 	$(this).children(".sub").stop().slideUp();
 });
-
+$(".main_2>li").mouseover(function(){
+	$(this).children(".sub_2").stop().slideDown();
+});
+$(".main_2>li").mouseleave(function(){
+	$(this).children(".sub_2").stop().slideUp();
+});
 start();
 var imgs=5;
 var now = 0;
