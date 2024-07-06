@@ -3,33 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-#text_1{
-    align-content: center;
-    text-decoration: none;
-    color: white;
-    position: relative;
-    left: 76%;
-    font-size: 13px;
-    font-weight: 700;
-}
-body {
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
-}
-.top {
-    
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
-    height: 80px;
-}
-.top img {
-    
-    position: relative;
-    left: 2%;
-    display: block;
-    margin:  auto;
-}
+
 button {
     margin-right: 0px;
     width: 240px;
@@ -42,9 +16,45 @@ button {
     border: none;
     cursor: pointer;
 }
+
 button:hover {
     background: #ED9100;
 }
+
+#text_1 {
+    align-content: center;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    left: 1550px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.top img {
+
+    position: relative;
+    left: 3%;
+    display: block;
+    margin: auto;
+}
+
+
+.top {
+    display: flex;
+    justify-content: center;
+    /* 수평 중앙 정렬 */
+    align-items: center;
+    /* 수직 중앙 정렬 */
+    background-color: black;
+    height: 80px;
+}
+
+.top img {
+    margin-right: auto;
+    /* 이미지를 왼쪽으로 밀어내기 위해 추가 */
+}
+
 .header {
     width: 100%;
     height: 40px;
@@ -52,6 +62,7 @@ button:hover {
     background-color: #595959;
     text-align: center;
 }
+
 .main {
     list-style: none;
     display: inline-flex;
@@ -59,47 +70,25 @@ button:hover {
     margin: 0;
 }
 
-.main_2 li{
-    margin: 0 ; /* a 태그 간격을 줄이기 위해 li 태그의 margin을 조정 */
-    position: relative;
-    width: 150px; /* li 태그의 너비 설정 */
-    height: 40px; /* li 태그의 높이 설정 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.main_2{
-    list-style: none;
-    display: inline-flex;
-    padding: 0;
-    margin: 0;
-}
-
-.main_2 li a {
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    color: white;
-    position: relative;
-    left: 990%;
-    top: 20px;
-}
-
 .main li {
-    margin: 0 ; /* a 태그 간격을 줄이기 위해 li 태그의 margin을 조정 */
+    margin: 0 10px;
+    /* a 태그 간격을 줄이기 위해 li 태그의 margin을 조정 */
     position: relative;
-    width: 150px; /* li 태그의 너비 설정 */
-    height: 40px; /* li 태그의 높이 설정 */
+    width: 150px;
+    /* li 태그의 너비 설정 */
+    height: 40px;
+    /* li 태그의 높이 설정 */
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .main li a {
     font-size: 16px;
-    font-weight: 600;
     text-decoration: none;
     color: white;
 }
+
 .main li:hover .sub {
     display: block;
 }
@@ -111,42 +100,608 @@ button:hover {
     background-color: black;
     display: none;
     position: absolute;
-    top: 40px; /* 부모 li 태그의 높이와 일치시킴 */
+    top: 40px;
+    /* 부모 li 태그의 높이와 일치시킴 */
     left: 0;
-    width: 150px; /* 부모 li 태그의 너비와 일치시킴 */
+    width: 150px;
+    /* 부모 li 태그의 너비와 일치시킴 */
 }
+
 .sub li {
     padding: 5px 10px;
-    margin: 0; /* li 태그 아래의 공백을 없애기 위해 margin을 0으로 설정 */
+    margin: 0;
+    /* li 태그 아래의 공백을 없애기 위해 margin을 0으로 설정 */
 }
+
 .sub li a {
     color: white;
     text-decoration: none;
 }
+
 .sub li:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-.sub_2 li:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-.sub_2 li a {
-    color: red;
-    text-decoration: none;
+
+.bikeicon {
     position: absolute;
-    
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -150%);
+
 }
-.sub li {
-    padding: 5px 10px;
-    margin: 0; /* li 태그 아래의 공백을 없애기 위해 margin을 0으로 설정 */
-    position: absolute;
-    
-}
-.sub_2 {
-    list-style: none;
-   
+
+.mid p {
+    font-size: 40px;
+    font-weight: 700;
+    color: #FDC300;
+    text-align: center;
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    position: relative;
+    bottom: 967px;
     background-color: black;
+}
+
+.mid img {
+
+    position: relative;
+    bottom: 38px;
+}
+
+.mid img:hover {
+    filter: brightness(60%);
+    cursor: help;
+}
+
+/* -----------------------------움직이는 코드----------------------------- */
+.moving {
+    filter: brightness(85%);
+    position: relative;
+    bottom: 55px;
+    width: 100%;
+    height: 527px;
+    background:
+        url('../스크린샷 2024-07-05 173322.png') 0 center /500px repeat-x;
+    animation: movebg 0.7s linear infinite;
+}
+
+@keyframes movebg {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: -500px;
+    }
+}
+
+/* --------------------------------------------------------------------------- */
+.moving_2 {
+
+    position: relative;
+    bottom: 160px;
+    width: 100%;
+    height: 527px;
+    background:
+        url('../PUBG.png') 0 center /1500px repeat-x;
+    animation: movebg_2 7s linear infinite;
+}
+
+@keyframes movebg_2 {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: -1500px;
+    }
+}
+
+/* --------------------------------------------------------------------------- */
+.moving_3 {
+    transform: rotate(180deg);
+    position: relative;
+    bottom: 524px;
+    width: 100%;
+    height: 527px;
+    background:
+        url('../PUBG.png') 0 center /1500px repeat-x;
+    animation: movebg_3 7s linear infinite;
+}
+
+@keyframes movebg_3 {
+    0% {
+        background-position: 0;
+    }
+
+    100% {
+        background-position: -1500px;
+    }
+}
+
+/* --------------------------------------------------------------------------- */
+.bikeicon {
+    filter: brightness(70%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-150%, -95%);
+}
+
+.bikeicon .tire01 {
+
+    position: relative;
+    bottom: 17px;
+    left: -62%;
+}
+
+.bikeicon .tire02 {
+    position: relative;
+    bottom: 17px;
+    left: -33%;
+}
+
+.tire-rotate {
+    animation: tire-rotate 1s linear infinite;
+}
+
+@keyframes tire-rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(550deg);
+    }
+}
+
+/* 두번째 자동차 */
+.bikeicon_1 {
+    filter: brightness(70%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%, -65%);
+}
+
+.bikeicon_1 .tire1 {
+    position: relative;
+    bottom: 172px;
+    left: -59%;
+
+}
+
+.bikeicon_1 .tire2 {
+    position: relative;
+    bottom: 172px;
+    left: -33%;
+}
+
+.tire-rotate {
+    animation: tire-rotate 1s linear infinite;
+}
+
+@keyframes tire-rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.chatbox:hover {
+    animation: tire-rotate 1s linear infinite;
+}
+
+@keyframes tire-rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* -------------------차체 흔들기------------------- */
+.chatbox {
+    animation: motion 0.3s linear 0s infinite alternate;
+    margin-top: 0;
+}
+
+@keyframes motion {
+    0% {
+        margin-top: 30px;
+    }
+
+    100% {
+        margin-top: 60px;
+    }
+}
+
+/* ------------------------------ */
+.bikeicon_2 {
+    filter: brightness(15%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(180%, -130%);
+}
+
+.tire-rotate_2 {
+    animation: tire-rotate_2 1s linear infinite;
+}
+
+.tire-rotate_2:hover {
+    animation: tire-rotate_2 0.3s linear infinite;
+}
+
+@keyframes tire-rotate_2 {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ------------------------------ */
+.bikeicon_3 {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(80%, -160%);
+}
+
+.tire-rotate_3:hover {
+    animation: tire-rotate_25 0.7s linear infinite;
+}
+
+@keyframes tire-rotate_25 {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.tire-rotate_3 {
+
+    animation: motion 0.6s linear 0s infinite alternate;
+    margin-top: 0;
+}
+
+
+@keyframes tire-rotate_3 {
+    0% {
+        margin-top: 30px;
+    }
+
+
+
+    100% {
+        margin-top: 60px;
+    }
+}
+
+/* ----------------------이미지 움직이는 코드-----------------------------*/
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.p {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 900;
+    position: relative;
+    bottom: 400px;
+    color: #F6C000;
+}
+
+.slideshow-container {
+    position: relative;
+    bottom: 300px;
+    max-width: 550px;
+
+    position: relative;
+    margin: auto;
+    box-shadow: 10PX 10px 10px rgba(0, 0, 0, 0.8);
+}
+
+.mySlides {
+    display: none;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: #0d0d0d;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+
+/* ---------------------------------------------------------------------------------------------------*/
+.modal {
     display: none;
     position: fixed;
-    
-    width: 150px; /* 부모 li 태그의 너비와 일치시킴 */
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content p {
+    position: relative;
+    left: 55%;
+    bottom: 220px;
+    font-size: 70px;
+    font-weight: 700;
+    color: #FDC300;
+}
+
+.modal-content {
+    position: absolute;
+    background-color: #000000;
+    height: 370px;
+
+
+
+    width: 1200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0);
+}
+
+.close {
+    position: relative;
+    right: 40px;
+    top: 40px;
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #FDC300;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.back_ground {
+    width: 100%;
+    height: 500px;
+    background-color: #1C1E21;
+    position: relative;
+    bottom: 117px;
+
+
+
+}
+
+.background {
+    background-color: #1c1f2457;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    bottom: 1170px;
+
+}
+
+.bottom-ground {
+    background-color: #717171;
+    width: 100%;
+    height: 700px;
+    position: relative;
+    bottom: 700px;
+}
+
+.aa {
+
+    position: relative;
+    left: 70%;
+    bottom: 1500px;
+    width: 400px;
+    height: 600px;
+    background: url('https://www.madtimes.org/news/photo/202302/16621_38089_656.jpg')
+}
+
+.aa:hover {
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.8);
+}
+
+.aa .aaa {
+    position: relative;
+    bottom: -120px;
+}
+
+.aa .p__1 {
+    text-align: center;
+    position: relative;
+    top: 40px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #ED9100;
+}
+
+.aa .p-1 {
+    align-content: center;
+    text-align: center;
+    font-size: 70px;
+    color: #000000;
+    font-weight: 800;
+
+}
+
+.bb {
+
+    position: relative;
+    left: 40%;
+    bottom: 2100px;
+    width: 400px;
+    height: 600px;
+    background: url('../스크린샷 2024-07-06 222827.png');
+}
+
+.bb .bbb {
+    position: relative;
+    bottom: -120px;
+}
+
+.bb .p-1 {
+    align-content: center;
+    text-align: center;
+    font-size: 70px;
+    color: white;
+    font-weight: 800;
+}
+
+.bb .p__1 {
+    text-align: center;
+    position: relative;
+    top: 40px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #ED9100;
+}
+
+.bb:hover {
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.8);
+}
+
+.cc {
+
+    position: relative;
+    left: 10%;
+    bottom: 2700px;
+    width: 400px;
+    height: 600px;
+    background: url('https://image.kmib.co.kr/online_image/2019/0724/611511110013532865_1.jpg');
+}
+
+.cc .p-1 {
+    align-content: center;
+    text-align: center;
+    font-size: 70px;
+    color: white;
+    font-weight: 800;
+}
+
+.cc .p__1 {
+    text-align: center;
+    position: relative;
+    top: 40px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #ED9100;
+}
+
+.cc:hover {
+    box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.8);
+}
+
+.cc .ccc {
+    position: relative;
+    bottom: -120px;
 }

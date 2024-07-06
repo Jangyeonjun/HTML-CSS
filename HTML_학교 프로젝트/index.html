@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel ="stylesheet" href = "css/style.css" type = "text/css">
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous" defer = "defer"></script>
-	<script src = "js/script.js" defer = "defer"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous" defer="defer"></script>
+    <script src="js/script.js" defer="defer"></script>
+
+
 </head>
+
 <body>
-	<div class="top">
-		<ul class="main_2">
-			<li>
-				<a href="#">한국어▼</a>						
-				<ul class='sub_2'>
-					<li><a href="#">아</a></li>
-					<li><a href="#">아</a></li>
-					<li><a href="#">아</a></li>
-				</ul>
-			</li>
-		</ul>
-		
-		<a href="" id="text_1"><p>| 로그인</p></a>
-        <img src="2256138.png" alt="이미지" width="130px" >
+    <div class="top">
+
+
+        <a href="" id="text_1">
+            <p>로그인</p>
+        </a>
+        <img src="2256138.png" alt="이미지" width="130px">
         <a href="#"><button>PlAY NOW</button></a>
     </div>
-    
-	<div class="div">
+
+    <div class="div">
         <header class="header">
             <ul class="main">
                 <li>
-                    <a href="#">게임정보▼</a>						
+                    <a href="#">게임정보▼</a>
                     <ul class='sub'>
                         <li><a href="#">아</a></li>
                         <li><a href="#">아</a></li>
@@ -39,10 +37,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">뉴스</a>						
+                    <a href="#">뉴스</a>
                 </li>
                 <li>
-                    <a href="#">이벤트▼</a>						
+                    <a href="#">이벤트▼</a>
                     <ul class='sub'>
                         <li><a href="#">아</a></li>
                         <li><a href="#">아</a></li>
@@ -50,20 +48,209 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">미디어</a>						
+                    <a href="#">미디어</a>
                 </li>
                 <li>
-                    <a href="#">커뮤니티</a>						
+                    <a href="#">커뮤니티</a>
                 </li>
                 <li>
-                    <a href="#">고객지원</a>						
+                    <a href="#">고객지원▼</a>
                     <ul class='sub'>
-                        <li onclick="winOpen1()"><a href="#">로그인</a></li>
-                        <li onclick="winOpen1()"><a href="#">회원가입 클릭</a></li>
+                        <li onclick="winOpen1()"><a href="#">Stem</a></li>
+                        <li onclick="winOpen2()"><a href="#">Epic Games</a></li>
+                        <li onclick="winOpen1()"><a href="#">PlayStation</a></li>
+                        <li onclick="winOpen1()"><a href="#">Xbox</a></li>
+
                     </ul>
-                </li>					
+                </li>
             </ul>
         </header>
     </div>
+    <div class="mid">
+        <div>
+            <div class="moving"></div>
+            <img src="스크린샷 2024-07-05 174959.png" alt="" width="100%" height="850px" class="mid_img">
+        </div>
+
+        <p>PUBG</p>
+        <div class="back"></div>
+    </div>
+    <div class="section" draggable="true">
+        <div class="bikeicon">
+            <img src="1103_20240705144123.png" class="img_4 chatbox" width="400px" draggable="true">
+            <img src="화면 캡처 2024-07-05 140517.png" class="tire01 tire-rotate" width="60px" draggable="true">
+            <img src="화면 캡처 2024-07-05 140517.png" class="tire02 tire-rotate" width="60px" draggable="true">
+        </div>
+    </div>
+
+    <div class="section_1" draggable="true">
+        <div class="bikeicon_1">
+            <img src="버기.png" class="img_5 chatbox">
+            <img src="스크린샷_2024-07-05_180911-removebg-preview.png" class="tire1 tire-rotate" width="70px"
+                draggable="true">
+            <img src="스크린샷_2024-07-05_180911-removebg-preview.png" class="tire2 tire-rotate" width="70px"
+                draggable="true">
+        </div>
+
+        <div class="bikeicon_2">
+            <img src="버기.png" class="img_5 tire-rotate_2" width="250" draggable="true" onclick="myFunction">
+        </div>
+        <div class="bikeicon_3">
+            <img src="11.png" class="img_6 tire-rotate_3" width="180px">
+        </div>
+
+    </div>
+
+    <div id="myModal" class="modal" draggable="true">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe width="590px" height="355px" src="https://www.youtube.com/embed/bsxNcufh7Vk?si=zMC1uLjKh9tXdCJN"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>⇦ 패치노트
+
+            </p>
+        </div>
+    </div>
+    <div class="back_ground">
+        <div class="moving_2"></div>
+
+    </div>
+    <div class="moving_3"></div>
+
+    <div class="background">
+        <p class="p">맵 정보</p>
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="-tPi9HGcpxiVxCOaPgJkJW48FlczMXwmVt-pz43KKmd6lqTdlv-p9FpPHUs7-_JY5dj8EyZDRRmj3YKznGxR3Q.webp"
+                    style="width:100%">
+                <div class="text">Caption Text</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="ncr-6r2zGw0v-Ll_M3SSf6sfwBOgJ9seyKRfcw-pVLfdKSacwTGB18_qr1XnVF55sh5wTYZjfgbSr-1LZn_HQw.webp"
+                    style="width:100%">
+                <div class="text">Caption Two</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="NslpEw0GO_5LWsnBcHYdRuF6MPf9Xn7Kg55I4mMwxD7XAj_FPBtrmDNfN4F9ETz6V_XCwAREvi7X6gK6CDzrWg.webp"
+                    style="width:100%">
+                <div class="text">Caption Three</div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+    </div>
+    </div>
+
+    <div class="bottom-ground"></div>
+
+    <a href="" style="text-decoration: none;">
+        <div class="aa">
+            <p class="p-1">비켄디</p>
+            <p class="p__1">보러가기</p>
+            <iframe class="aaa" width="400" height="315"
+                src="https://www.youtube.com/embed/aHEm2IFys1Y?si=bHxk3ib-15z5G7TM" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </a>
+    <a href="" style="text-decoration: none;">
+        <div class="bb">
+            <p class="p-1">미라마</p>
+            <p class="p__1">보러가기</p>
+            <iframe class="bbb" width="400" height="315"
+                src="https://www.youtube.com/embed/4Tc7jlTkIdE?si=N4FG3qXsqbbyALUE" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </a>
+    <a href="에란겔.html" style="text-decoration: none;">
+        <div class="cc">
+            <p class="p-1">에란겔</p>
+            <p class="p__1">보러가기</p>
+            <iframe class="ccc" width="400" height="315"
+                src="https://www.youtube.com/embed/7jZluHyUl1k?si=AVxoKH65k4PLyEso" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </a>
+
+
+
+
+    <script>
+
+        document.querySelectorAll('.mid_img').forEach(img => {
+            img.addEventListener('click', () => {
+                document.getElementById('myModal').style.display = 'block';
+            });
+        });
+
+        // 모달 창 닫기
+        document.querySelector('.close').addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'none';
+        });
+
+        // 모달 창 바깥 클릭 시 닫기
+        window.addEventListener('click', (event) => {
+            if (event.target === document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        });
+
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Hello World";
+        }
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+    </script>
 </body>
+
+
 </html>

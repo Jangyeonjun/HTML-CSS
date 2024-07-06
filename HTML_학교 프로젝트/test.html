@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에란겔</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            background-color: black;
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main img {
+            margin-top: 10px;
+        }
+
+        .main p {
+            font-size: 45px;
+            font-weight: 700;
+            color: #FDC300;
+            margin-top: 20px;
+        }
+
+        .img-mam img {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 10px 20px 20px black;
+        }
+
+        .매인 {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .매인 .맵 {
+            color: #FDC300;
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .매인 .내용 {
+            color: white;
+            font-size: 20px;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+
+        .배경 img {
+            width: 100%;
+            height: 1000px;
+            filter: brightness(60%);
+        }
+
+        .botton {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .botton p {
+            color: #FDC300;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: black;
+            padding: 10px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <img src="2256138.png" width="130px">
+        <p class="main_p">에란겔</p>
+    </div>
+
+    <div>
+        <img class="이미지" src="26310389_s.jpg" width="100%" height="900px">
+        <div class="매인">
+            <p class="맵">맵</p>
+            <p class="내용">
+                8x8 <br>
+                다양한 지형을 특징으로 가지고 있는 에란겔에서 넓은 목초지,<br>
+                높은 산지 그리고 수많은 도시를 탐험해 보세요. 에란겔은 배틀그라운드의<br>
+                대부 세르게이 칼림닉이 태어난 곳이자 그가 최후의 생존자가 된<br>
+                곳이며, 첫 번째 공식 배틀그라운드 경기가 개최된 섬이기도 합니다. <br>
+            </p>
+        </div>
+    </div>
+
+    <div class="botton">
+        <p class="p">Georgopol</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+        <p class="p">Staber</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+        <p class="p">Pochinki</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+        <p class="p">Military Base</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+    </div>
+
+    <div class="img-mam"><img src="9b5d63e.jpg" usemap="#image-map"></div>
+    <map name="image-map">
+        <area target="" title="" shape="circle" coords="495,960,21" href="" alt="">
+    </map>
+
+    <div class="img-main"><img src="eb2fee8.png" alt=""></div>
+    <div class="배경"><img src="22399619_s.jpg" alt=""></div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe width="590px" height="355px" src="https://www.youtube.com/embed/bsxNcufh7Vk?si=zMC1uLjKh9tXdCJN"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>⇦ 패치노트</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.botton .p').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById('myModal').style.display = 'block';
+            });
+        });
+
+        document.querySelector('.modal .close').addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
