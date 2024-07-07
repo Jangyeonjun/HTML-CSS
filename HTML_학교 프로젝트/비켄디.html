@@ -4,13 +4,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미라마</title>
+    <title>비켄디</title>
     <style>
         * {
             margin: 0;
             padding: 0;
         }
 
+        .modal {
+            z-index: 6;
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content p {
+
+            position: relative;
+            left: 65%;
+            bottom: 220px;
+            font-size: 50px;
+            font-weight: 500;
+            color: #FDC300;
+        }
+
+        .modal-content {
+            position: absolute;
+            background-color: #000000;
+            height: 370px;
+            width: 1000px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0);
+        }
+
+        .close {
+            position: relative;
+            right: 40px;
+            top: 40px;
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #FDC300;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* -------------------------------------------------------------------- */
+
+        .modal_2 {
+            z-index: 6;
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content_2 p {
+
+            position: relative;
+            left: 65%;
+            bottom: 220px;
+            font-size: 50px;
+            font-weight: 500;
+            color: #FDC300;
+        }
+
+        .modal-content_2 {
+            position: absolute;
+            background-color: #000000;
+            height: 370px;
+            width: 1000px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0);
+        }
+
+        .close_2 {
+            position: relative;
+            right: 40px;
+            top: 40px;
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close_2:hover,
+        .close_2:focus {
+            color: #FDC300;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* -------------------------------------------------------------------- */
+        .modal_3 {
+            z-index: 6;
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content_3 p {
+
+            position: relative;
+            left: 65%;
+            bottom: 220px;
+            font-size: 50px;
+            font-weight: 500;
+            color: #FDC300;
+        }
+
+        .modal-content_3 {
+            position: absolute;
+            background-color: #000000;
+            height: 370px;
+            width: 1000px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0);
+        }
+
+        .close_3 {
+            position: relative;
+            right: 40px;
+            top: 40px;
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close_3:hover,
+        .close_3:focus {
+            color: #FDC300;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* -------------------------------------------------------------------- */
+        .modal_4 {
+            z-index: 6;
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content_4 p {
+
+            position: relative;
+            left: 65%;
+            bottom: 220px;
+            font-size: 50px;
+            font-weight: 500;
+            color: #FDC300;
+        }
+
+        .modal-content_4 {
+            position: absolute;
+            background-color: #000000;
+            height: 370px;
+            width: 1000px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0);
+        }
+
+        .close_4 {
+            position: relative;
+            right: 40px;
+            top: 40px;
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* -------------------------------------------------------------------- */
+        .modal_5 {
+            z-index: 6;
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content_5 p {
+
+            position: relative;
+            left: 65%;
+            bottom: 220px;
+            font-size: 50px;
+            font-weight: 500;
+            color: #FDC300;
+        }
+
+        .modal-content_5 {
+            position: absolute;
+            background-color: #000000;
+            height: 370px;
+            width: 1000px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0);
+        }
+
+        .close_5 {
+            position: relative;
+            right: 40px;
+            top: 40px;
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close_5:hover,
+        .close_5:focus {
+            color: #FDC300;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* -------------------------------------------------------------------------- */
+        .modal_6 {
+            z-index: 6;
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content_6 p {
+
+            position: relative;
+            left: 65%;
+            bottom: 220px;
+            font-size: 50px;
+            font-weight: 500;
+            color: #FDC300;
+        }
+
+        .modal-content_6 {
+            position: absolute;
+            background-color: #000000;
+            height: 370px;
+            width: 1000px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0);
+        }
+
+        .close_6 {
+            position: relative;
+            right: 40px;
+            top: 40px;
+            color: #ffffff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close_6:hover,
+        .close_6:focus {
+            color: #FDC300;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /*  -----------------------------------------------------------------*/
         .main {
             background-color: black;
             width: 100%;
@@ -45,7 +357,7 @@
         .img-main img {
             z-index: 1;
             position: relative;
-            bottom: 1770px;
+            bottom: 1870px;
             left: 19%;
 
         }
@@ -78,7 +390,7 @@
             width: 100%;
             height: 1000px;
             position: relative;
-            bottom: 2730px;
+            bottom: 2860px;
             filter: brightness(60%);
         }
 
@@ -87,7 +399,7 @@
             font-weight: 500;
             font-family: 'Times New Roman', Times, serif;
             background-color: black;
-            width: 70px;
+            width: 80px;
         }
 
 
@@ -95,15 +407,15 @@
         .botton {
             position: relative;
             z-index: 3;
-            bottom: 260px;
-            left: 670px;
+            bottom: 290px;
+            left: 925px;
         }
 
         .botton_1 {
             position: relative;
             z-index: 3;
-            bottom: 500px;
-            left: 61%;
+            bottom: 30px;
+            left: 56%;
         }
 
         .botton_1 .p_2 {
@@ -117,8 +429,8 @@
         .botton_2 {
             position: relative;
             z-index: 3;
-            bottom: 210px;
-            left: 47%;
+            bottom: 300px;
+            left: 39%;
         }
 
         .botton_2 .p_3 {
@@ -126,14 +438,15 @@
             font-weight: 500;
             font-family: 'Times New Roman', Times, serif;
             background-color: black;
-            width: 60px;
+            text-align: center;
+            width: 85px;
         }
 
         .botton_3 {
             position: relative;
             z-index: 3;
             top: 15px;
-            left: 53%;
+            left: 63%;
         }
 
         .botton_3 .p_4 {
@@ -142,27 +455,61 @@
             font-family: 'Times New Roman', Times, serif;
             background-color: black;
             width: 55px;
+            text-align: center;
         }
 
+        .botton_4 {
+            position: relative;
+            z-index: 3;
+            top: -160px;
+            left: 41%;
+        }
 
-        .back-ground{
+        .botton_4 .p_5 {
+            color: #FDC300;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: black;
+            width: 55px;
+        }
+
+        .botton_5 {
+            position: relative;
+            z-index: 3;
+            top: 140px;
+            left: 71%;
+        }
+
+        .botton_5 .p_6 {
+            color: #FDC300;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: black;
+            width: 55px;
+            text-align: center;
+        }
+
+        .back-ground {
             width: 100%;
             height: 500px;
-            background-color: rgb(2, 1, 1) ;position: relative ;
-            bottom: 2750px;
-            
+            background-color: rgb(2, 1, 1);
+            position: relative;
+            bottom: 2865px;
+
         }
-        a{
+
+        a {
             text-decoration: none;
         }
-        .yy{ 
+
+        .yy {
             text-align: center;
             font-size: 40px;
             font-weight: 600;
-          color: #FDC300;
-           position: relative;
-           bottom: 3000px;
-            
+            color: #FDC300;
+            position: relative;
+            bottom: 3000px;
+
         }
     </style>
 
@@ -178,23 +525,29 @@
         <p class="맵">맵</p>
         <p class="내용">8x8 <br>
             급격한 기후변화로 인해 폭설이 지나간 이후, 새롭게 탄생한 비켄디. 곳곳에서 원인을 알 수 없는 블리자드가 몰아치고 있는 가운데,<br>
-             설원 속 혹독한 겨울을 살아남기 위한 경쟁이 기다리고 있습니다 <br>
+            설원 속 혹독한 겨울을 살아남기 위한 경쟁이 기다리고 있습니다 <br>
         </p>
     </div>
 
 </div>
 <div class="botton">
-    <p class="p">Georgopol</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+    <p class="p">Observatory</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px" class="a">
 </div>
 
 <div class="botton_1">
-    <p class="p_2">Staber</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+    <p class="p_2">Train Station</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px" class="aa">
 </div>
 <div class="botton_2">
-    <p class="p_3">Pochinki</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+    <p class="p_3">Glacier+Lab Camp</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px" class="aaa">
 </div>
 <div class="botton_3">
-    <p class="p_4">Military Base</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px">
+    <p class="p_4">Cave</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px" class="aaaa">
+</div>
+<div class="botton_4">
+    <p class="p_5">Lumber Yard</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px" class="aaaa">
+</div>
+<div class="botton_5">
+    <p class="p_6">Comeback</p><img src="스크린샷_2024-07-07_015254-removebg-preview.png" width="50px" class="aaaa">
 </div>
 
 
@@ -211,9 +564,190 @@
 
 <div class="back-ground"></div>
 
-<a href="index.html" ><p class="yy">돌아가기</p></a>
+<a href="index.html">
+    <p class="yy">돌아가기</p>
+</a>
+
+<div id="myModal" class="modal" draggable="true">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <video width="590px" height="355px" controls>\
+            <source src="https://wstatic-prod.pubg.com/web/live/main_07396de/videos/video-spot1.e90cb35.mp4#t=0.001">
+        </video>
+        <p>⇦ 비켄디
+
+        </p>
+    </div>
+</div>
+<!-- --------------------------------------------------------------------------------------------------------------------- -->
+<div id="myModal_2" class="modal_2" draggable="true">
+    <div class="modal-content_2">
+        <span class="close_2">&times;</span>
+        <video width="590px" height="355px" controls>\
+            <source src="https://wstatic-prod.pubg.com/web/live/main_07396de/videos/video-spot3.f383d8d.mp4#t=0.001">
+        </video>
+        <p>⇦ 비켄디</p>
+    </div>
+</div>
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------- -->
+<div id="myModal_3" class="modal_3" draggable="true">
+    <div class="modal-content_3">
+        <span class="close_3">&times;</span>
+        <video width="590px" height="355px" controls>\
+            <source src="https://wstatic-prod.pubg.com/web/live/main_07396de/videos/video-spot2.2e2921d.mp4#t=0.001">
+        </video>
+        <p>⇦ 비켄디
 
 
+        </p>
+    </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+<div id="myModal_4" class="modal_4" draggable="true">
+    <div class="modal-content_4">
+        <span class="close_4">&times;</span>
+        <video width="590px" height="355px" controls>\
+            <source src="https://wstatic-prod.pubg.com/web/live/main_07396de/videos/video-spot5.c8163de.mp4#t=0.001">
+        </video>
+        <p>⇦ 비켄디
+
+        </p>
+    </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div id="myModal_5" class="modal_5" draggable="true">
+    <div class="modal-content_5">
+        <span class="close_5">&times;</span>
+        <video width="590px" height="355px" controls>\
+            <source src="https://wstatic-prod.pubg.com/web/live/main_07396de/videos/video-spot4.1a211ce.mp4#t=0.001">
+        </video>
+        <p>⇦ 비켄디
+
+        </p>
+    </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------- -->
+<div id="myModal_6" class="modal_6" draggable="true">
+    <div class="modal-content_6">
+        <span class="close_6">&times;</span>
+        <video width="590px" height="355px" controls>\
+            <source src="https://wstatic-prod.pubg.com/web/live/main_07396de/videos/video-spot6.6adfbb3.mp4#t=0.001">
+        </video>
+        <p>⇦ 비켄디
+
+        </p>
+    </div>
+</div>
+<script>
+    document.querySelectorAll('.botton .a').forEach(img => {
+        img.addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'block';
+        });
+    });
+
+    // 모달 창 닫기
+    document.querySelector('.close').addEventListener('click', () => {
+        document.getElementById('myModal').style.display = 'none';
+    });
+
+    // 모달 창 바깥 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+        if (event.target === document.getElementById('myModal')) {
+            document.getElementById('myModal').style.display = 'none';
+        }
+    });
+
+    //-------------------------------------------------------------------------
+    document.querySelectorAll('.botton_1 .aa').forEach(img => {
+        img.addEventListener('click', () => {
+            document.getElementById('myModal_2').style.display = 'block';
+        });
+    });
+
+    // 모달 창 닫기
+    document.querySelector('.close_2').addEventListener('click', () => {
+        document.getElementById('myModal_2').style.display = 'none';
+    });
+
+    // 모달 창 바깥 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+        if (event.target === document.getElementById('myModal_2')) {
+            document.getElementById('myModal_2').style.display = 'none';
+        }
+    });
+    //-------------------------------------------------------------------------
+    document.querySelectorAll('.botton_2 .aaa').forEach(img => {
+        img.addEventListener('click', () => {
+            document.getElementById('myModal_3').style.display = 'block';
+        });
+    });
+
+    // 모달 창 닫기
+    document.querySelector('.close_3').addEventListener('click', () => {
+        document.getElementById('myModal_3').style.display = 'none';
+    });
+
+    // 모달 창 바깥 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+        if (event.target === document.getElementById('myModal_3')) {
+            document.getElementById('myModal_3').style.display = 'none';
+        }
+    });
+    // ---------------------------------------------------------------------
+    document.querySelectorAll('.botton_3 .aaaa').forEach(img => {
+        img.addEventListener('click', () => {
+            document.getElementById('myModal_4').style.display = 'block';
+        });
+    });
+
+    // 모달 창 닫기
+    document.querySelector('.close_4').addEventListener('click', () => {
+        document.getElementById('myModal_4').style.display = 'none';
+    });
+
+    // 모달 창 바깥 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+        if (event.target === document.getElementById('myModal_4')) {
+            document.getElementById('myModal_4').style.display = 'none';
+        }
+    });
+    // ---------------------------------------------------------------------
+    document.querySelectorAll('.botton_4 .aaaa').forEach(img => {
+        img.addEventListener('click', () => {
+            document.getElementById('myModal_5').style.display = 'block';
+        });
+    });
+
+    // 모달 창 닫기
+    document.querySelector('.close_5').addEventListener('click', () => {
+        document.getElementById('myModal_5').style.display = 'none';
+    });
+
+    // 모달 창 바깥 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+        if (event.target === document.getElementById('myModal_5')) {
+            document.getElementById('myModal_5').style.display = 'none';
+        }
+    });
+    // ---------------------------------------------------------------------
+    document.querySelectorAll('.botton_5 .aaaa').forEach(img => {
+        img.addEventListener('click', () => {
+            document.getElementById('myModal_6').style.display = 'block';
+        });
+    });
+
+    // 모달 창 닫기
+    document.querySelector('.close_6').addEventListener('click', () => {
+        document.getElementById('myModal_6').style.display = 'none';
+    });
+
+    // 모달 창 바깥 클릭 시 닫기
+    window.addEventListener('click', (event) => {
+        if (event.target === document.getElementById('myModal_6')) {
+            document.getElementById('myModal_6').style.display = 'none';
+        }
+    });
+</script>
 
 
 
