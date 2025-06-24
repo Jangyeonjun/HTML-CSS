@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보처리기사 실기 퀴즈</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .chapter-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .chapter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .option-btn {
+            transition: all 0.2s ease-in-out;
+            border-width: 2px;
+        }
+        .option-btn.correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+            color: #065f46;
+        }
+        .option-btn.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+        .disabled {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
+
+    <div id="app-container" class="bg-white rounded-2xl shadow-xl w-full max-w-2xl mx-auto overflow-hidden">
+        
+        <!-- 단원 선택 화면 -->
+        <div id="chapter-selection-screen">
+            <header class="p-6 bg-indigo-600 text-white">
+                <h1 class="text-2xl font-bold">정보처리기사 실기 퀴즈</h1>
+                <p class="text-indigo-200 mt-1">학습할 단원을 선택하세요.</p>
+            </header>
+            <main id="chapter-list" class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- JavaScript로 단원 버튼 생성 -->
+            </main>
+        </div>
+
+        <!-- 퀴즈 화면 -->
+        <div id="quiz-screen" class="hidden">
+            <header class="p-6 bg-indigo-600 text-white">
+                <h1 id="quiz-header-title" class="text-2xl font-bold"></h1>
+                <div class="flex justify-between items-center mt-2">
+                    <p id="progress-text" class="text-indigo-200"></p>
+                    <button id="back-to-chapters-btn" class="text-sm bg-white/20 hover:bg-white/30 px-3 py-1 rounded-md">단원 선택</button>
+                </div>
+            </header>
+            <main class="p-6">
+                <div id="question-container">
+                    <p id="question-text" class="text-lg font-semibold leading-relaxed mb-6"></p>
+                    <div id="options-container" class="space-y-3">
+                        <!-- JavaScript로 보기 버튼 생성 -->
+                    </div>
+                </div>
+                <div id="feedback-container" class="mt-6">
+                    <p id="feedback-text" class="text-base font-bold min-h-[24px]"></p>
+                </div>
+                <button id="next-question-btn" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg mt-4 hover:bg-indigo-700 transition-colors hidden">
+                    다음 문제
+                </button>
+            </main>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div id="result-screen" class="hidden">
+            <header class="p-6 bg-indigo-600 text-white">
+                <h1 class="text-2xl font-bold">퀴즈 결과</h1>
+            </header>
+            <main class="p-8 text-center">
+                <p class="text-xl mb-2">수고하셨습니다!</p>
+                <p id="score-text" class="text-4xl font-bold text-indigo-600 mb-8"></p>
+                <div class="flex gap-4">
+                    <button id="restart-quiz-btn" class="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition-colors">
+                        다시 풀기
+                    </button>
+                    <button id="go-to-chapters-btn" class="flex-1 bg-slate-200 text-slate-800 font-bold py-3 rounded-lg hover:bg-slate-300 transition-colors">
+                        단원 선택
+                    </button>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                "chapter": "응용 SW 기초 기술 활용",
+                "exams": [
+                    { "exam": "컴퓨터의 하드웨어를 쉽게 사용할 수 있도록 인터페이스를 제공해주는 소프트웨어 사용자 편의성을 위한 인터페이스인 동시에 자원을 관리하는 관리자는?", "answer": "운영체제" },
+                    { "exam": "마우스 이용한 편리한 인터페이스, 마이크로소프트사만 수정 및 배포 가능, 고객 지원 체계적 (문제 발견 시 수정 시간이 오래 걸리고 보안이 취약하다.)", "answer": "윈도우" },
+                    { "exam": "멀티태스크 기능 리눅스는 유닉스의 호환커널, 자유 소프트웨어로 원하는 대로의 실행, 무료/유료로 복제물 재배포 가능, 빠른 업데이트 가능, 체계적 지원 X", "answer": "리눅스" },
+                    { "exam": "유닉스 기반 애플사 제품만 사용 가능, 그래픽 기반 운영체제", "answer": "맥OS" },
+                    { "exam": "프로그램의 실행이 종료될 때까지 메모리를 가용한 상태로 유지 및 관리하는것", "answer": "메모리 관리" },
+                    { "exam": "일시 중지 및 재실행, 동기화, 통신, 교착상태 처리, 프로세스 생성 삭제 등", "answer": "프로세스 관리" },
+                    { "exam": "서버의 가동률을 60 ~ 70 이상 올릴 수 있다", "answer": "가상화" },
+                    { "exam": "인터넷 기반에서 구동되는 컴퓨팅 기술", "answer": "클라우드" },
+                    { "exam": "인프라와 운영체제뿐만 아니라 사용할 수 있는 소프트웨어까지 갖추어져 웹상의 로그인만으로 다양한 소프트웨어를 사용한 만큼 비용을 지불해 가며 사용할 수 있는 서비스", "answer": "SaaS" },
+                    { "exam": "운영체제가 이미 구성되어 있는 상태에서 사용자는 데이터와 애플리케이션만 직접 관할 수 있는 서비스", "answer": "PaaS" },
+                    { "exam": "웹상에서 구글, 마이크로 소프트, 아마존 등에서 제공하는 환경의 네트워크, 보안, 데이터 저장소, 콘텐츠 딜리버리 서비스를 포함한 다양한 인프라를 임대하여 이용할 수 있는 서비스", "answer": "IaaS" },
+                    { "exam": "데이터 관리의 복잡성을 해결하는 동시에 데이터 추가, 변경, 검색, 삭제 및 백업, 복구, 보안 등의 기능을 지원하는 소프트웨어는 무엇인가?", "answer": "DBMS" },
+                    { "exam": "테이블 간의 관계를 정의하여 데이터를 관리하는 DBMS", "answer": "RDBMS" },
+                    { "exam": "엔티티 간의 관계를 도식화 한 것", "answer": "ERD" },
+                    { "exam": "엔티티는 사각형으로 나타내며 사물 또는 사건으로 정의되는 것", "answer": "개체" },
+                    { "exam": "개체가 가지고 있는 요소 또는 성질을 뜻하며 선으로 연결된 동그라미로 표기", "answer": "속성" },
+                    { "exam": "두 개체 간의 관계를 선을 이용하여 표기", "answer": "관계" },
+                    { "exam": "무결성을 확보하고 중복성을 배제하여 정확한 데이터가 들어가도록 하는 과정", "answer": "정규화" },
+                    { "exam": "테이블 생성", "answer": "Create" },
+                    { "exam": "필드/속성 변경", "answer": "Alter" },
+                    { "exam": "테이블 삭제", "answer": "Drop" },
+                    { "exam": "조건에 맞는 튜플 검색", "answer": "Select" },
+                    { "exam": "새로운 튜플 삽입", "answer": "Insert" },
+                    { "exam": "조건에 맞는 튜플 삭제", "answer": "Delete" },
+                    { "exam": "조건에 맞는 튜플 변경", "answer": "Update" },
+                    { "exam": "DB 사용자에게 권한을 부여하는 명령어", "answer": "Grant" },
+                    { "exam": "DB 사용자에게 권한을 취소하는 명령어", "answer": "Revoke" },
+                    { "exam": "DB 조작이 정상적으로 완료 되었음을 알려주는 명령어", "answer": "Commit" },
+                    { "exam": "DB 조작을 원래 상태로 복구하는 명령어", "answer": "Rollback" },
+                    { "exam": "국가,대륙과 같이 광범위한 지역을 연결하는 네트워크", "answer": "WAN" },
+                    { "exam": "한 건물 또는 작은 지역을 연결하는 네트워크", "answer": "LAN" },
+                    { "exam": "컴퓨터에 장착되어있는 랜카드", "answer": "NIC" },
+                    { "exam": "NIC 가 변환한 전기적 신호를 다른 컴퓨터로 전송하기 위한 케이블", "answer": "LAN 케이블" },
+                    { "exam": "여러개의 LAN 을 하나로 합쳐주는 장치", "answer": "허브" },
+                    { "exam": "허브와 동일하게 케이블을 하나로 합쳐주는 장치", "answer": "스위치" },
+                    { "exam": "서로 다른 네트워크를 연결해주는 장치", "answer": "라우터" },
+                    { "exam": "신호를 수신하여 신호를 증폭한 후 다음 구간으로 재전송하는 장치", "answer": "리피터" },
+                    { "exam": "인터넷 통신 규약", "answer": "프로토콜" },
+                    { "exam": "실제 장비들을 연결하기 위한 연결 장치이 있는 계층은? (허브, 리피터)", "answer": "물리 계층" },
+                    { "exam": "오류와 흐름을 제어하여 신뢰성 있는 데이터를 전송이 있는 계층은? (브리지, 스위치)", "answer": "데이터 링크 계층" },
+                    { "exam": "다수의 중개 시스템 중에서 가장 최적의 경로를 선택하도록 지원이 있는 계층은? (라우터)", "answer": "네트워크 계층" },
+                    { "exam": "통신장비의 송신/수신을 연결하여 목적지 간에 전송제어와 에러를 관리가 있는 계층은?(TCP/IP, UDP)", "answer": "전송 계층" },
+                    { "exam": "데이터의 송신/수신을 논리적으로 연결 유지하며 동기화를 담당이 있는 계층은? (호스트, 일반PC)", "answer": "세션 계층" },
+                    { "exam": "코드, 문자 등을 번역하여 압축, 해제, 보안 기능을 담당이 있는 계층은? (호스트, 일반PC)", "answer": "표현 계층" },
+                    { "exam": "사용자가 직접 사용하는 프로그램이 있는 계층은? (메일, 웹, 응용프로그램 등)", "answer": "응용 계층" },
+                    { "exam": "클라이언트 컴퓨터에게 특정한 서비스와 정보를 제공하는 서버용 컴퓨터 운영체제로 많이 사용되고 있으며, 편리함보다는 안정성과 Multitasking에 주안점을 두는 운영체제는?", "answer": "유닉스, 리눅스" },
+                    { "exam": "사용자가 직접 명령어를 입력하여 컴퓨터에게 명령을 내리는 방식의 명령어 인터페이스는?", "answer": "CLI" },
+                    { "exam": "마우스로 화면을 클릭하여 컴퓨터를 제어하는 방식의 명령어 인터페이스는?", "answer": "GUI" },
+                    { "exam": "DBMS의 특징으로는 데이터 무결성, 일관성, 회복성, ?, 효율성이 있다.", "answer": "보안성" },
+                    { "exam": "파일에 이름을 부여하고 저장이나 검색을 위해 논리적인 위치 등을 정의한 뒤 데이터를 관리하는 시스템은?", "answer": "파일 시스템" },
+                    { "exam": "데이터를 상하 종속적인 관계(트리 구조)로 계층화하여 관리하는 데이터베이스 관리 시스템은?", "answer": "계층형 데이터베이스 관리 시스템" },
+                    { "exam": "데이터의 구조를 네트워크상의 망 형태로 논리적으로 표현한 데이터베이스 관리 시스템은?", "answer": "망형 데이터베이스 관리 시스템" },
+                    { "exam": "가장 보편적으로 사용하는 데이터베이스 관리 시스템으로, 데이터를 저장하는 테이블의 일부를 다른 테이블과 상관관계로 데이터를 관리하는 시스템은? (Oracle, MySQL 등)", "answer": "관계형 데이터베이스 관리 시스템" },
+                    { "exam": "1차 정규화는 반복되는 그룹의 속성을 별도로 추출하고, 2차 정규화는 ?을 제거하며, 3차 정규화는 키에 종속되지 않은 칼럼을 제거한다.", "answer": "부분 함수적 종속성" },
+                    { "exam": "테이블을 생성하거나 변경, 삭제할 때 사용하는 명령어는? (CREATE, ALTER, DROP)", "answer": "DDL" },
+                    { "exam": "테이블에 저장되어 있는 데이터를 검색, 삽입, 삭제, 변경할 때 사용하는 명령어는? (SELECT, INSERT, DELETE, UPDATE)", "answer": "DML" },
+                    { "exam": "데이터베이스 관리자(DBA)가 데이터 관리를 목적으로 사용하는 명령어는? (GRANT, REVOKE, COMMIT, ROLLBACK)", "answer": "DCL" },
+                    { "exam": "데이터가 전달될 경로를 미리 물리적으로 전용선으로 설정하여 정해진 경로로만 데이터를 교환하는 방식은?", "answer": "회선 교환 방식" },
+                    { "exam": "패킷이라는 단위로 정보를 분할한 뒤 패킷 정보(주소, 데이터)를 활용하여 다양한 경로로 데이터를 교환하는 방식은?", "answer": "패킷 교환 방식" },
+                    { "exam": "국제 표준화 기구인 ISO에서 개발한 네트워크 계층 표현 모델은?", "answer": "OSI 7계층" },
+                    { "exam": "OSI 7계층은 물리 계층, 데이터 링크 계층, 네트워크 계층, 전송 계층, ?, 표현 계층, 응용 계층으로 구성되어 있다.", "answer": "세션 계층" },
+                    { "exam": "TCP/IP 프로토콜에는 네트워크 액세스 계층(물리, 데이터 링크), ?(네트워크), 트랜스포트 계층(전송), 응용 계층(세션, 표현, 응용)이 있다.", "answer": "인터넷 계층" },
+                    { "exam": "송신 측으로부터 수신 측까지 데이터를 전달하는 과정에서 목적지까지 최적의 경로를 산출하기 위한 법칙은?", "answer": "라우팅 알고리즘" },
+                    { "exam": "최초의 라우팅 프로토콜로서 거리 벡터 알고리즘을 활용하였으며, 라우팅 루프가 발생할 수도 있는 라우팅 프로토콜은?", "answer": "RIP" },
+                    { "exam": "RIP의 루프 문제를 해결한 방식으로 네트워크 상태를 고려하는 라우팅 프로토콜은?", "answer": "IGRP" },
+                    { "exam": "링크 상태 알고리즘을 사용하며 변경된 네트워크 정보를 빠르게 업데이트하는 라우팅 프로토콜은?", "answer": "OSPF" },
+                    { "exam": "규모가 큰 네트워크를 상호 연결하고자 할 때 사용하는 라우팅 프로토콜은?", "answer": "BGP" }
+                ]
+            },
+            {
+                "chapter": "UI 테스트",
+                "exams": [
+                    { "exam": "사용성에 대한 문제를 찾아내기 위한 전문가에 의해 이론과 경험을 근거로 하여 일련의 규칙들을 얼마나 잘 지키고 있는가를 확인하는 평가 방법이다. (결과물 : 평가보고서)", "answer": "휴리스틱 평가" },
+                    { "exam": "프로토타입의 가장 빠른 방법으로 실제 출시될 제품의 전반적인 컨셉과 흐름을 잘 보여주어 보는 사람들이 더 자유롭게 의견을 개진하면서 발전시킬 수 있는 방법이다. (결과물 : 프로토타입)", "answer": "페이퍼 프로토타입 평가" },
+                    { "exam": "A가 B보다 더 좋다, C가 D보다 더 편리하다 와 같이 제품이나 서비스에 대한 사용자의 선호도에 영향을 미치는 속성들을 파악하여 사용자의 니즈에 대응할 수 있는 평가방법이다. (결과물 : 선호도 평가)", "answer": "선호도 평가" },
+                    { "exam": "사용자가 실제로 제품이나 서비스와 연관된 것을 사용해 보고 태스크(TASK) 별 학습성, 효율성, 기억용이성, 오류, 만족도 등에 대해 평가방법이다. (결과물 : 학습성, 효율성, 오류 등 평가)", "answer": "성능 평가" },
+                    { "exam": "사용자 중심 디자인은 사용자가 원하고 필요로 하는 것에 대해 사용자의 한계 능력과 상황에 맞추어 디자인하는 기술이다.", "answer": "사용자 중심 디자인" },
+                    { "exam": "인터랙션이란 입출력 장치를 매개로 디지털 시스템과 사람이 주고 받는 일련의 의사소통 과정으로 사람의 행동과 이에 반응하는 시스템의 절차를 설계하는 것이다.", "answer": "인터랙션 디자인" },
+                    { "exam": "프로토타입은 사용자의 모든 요구사항이 정확하게 반영될 때까지 계속해서 개선되고 보완되는 것으로 중요한 기능이 포함되어 있는 시스템의 초기모델을 의미한다.", "answer": "프로토타입" },
+                    { "exam": "최종 화면에 표시될 컨텐츠에서 색상, 타이포그래픽, 이미지를 생략하여 요약하는 것으로 도식, 청사진, 또는 프로토타입이라 부른다.", "answer": "와이어프레임" },
+                    { "exam": "기업이 참여하고 있는 사업 분야의 시장 현황 및 특성을 파악하여 시장 매력 요인을 도출하고 성공가능성을 예측하기 위한 보고서이다.", "answer": "시장현황보고서" },
+                    { "exam": "리서치를 통해 파악한 사용자 정보(동기, 목표, 습관, 기대, 가정 등)를 프로젝트 멤버들과 사업 분야별로 상표, 디자인, 특허 실용 등 기업이 등록한 지적재산권 및 등록 내용의 변화 추리를 조사한 보고서이다.", "answer": "기술현황보고서" },
+                    { "exam": "주로 컴퓨터 프로그램 등의 최신 기술을 개발하여, 실제 상황에서 실현하기 전에 소규모로 시험 작동 해보는 것을 의미한다.", "answer": "파일럿 테스트" },
+                    { "exam": "일대일 면접을 통해 소비자의 심리를 파악하는 조사법으로 어떤 주제에 대해 응답자의 생각이나 느낌을 자유롭게 이야기함으로써 사용자의 욕구, 태도, 감정 등을 발견할 수 있다.", "answer": "심층 인터뷰" },
+                    { "exam": "표적시장으로 예상되는 소비자를 일정한 자격 기준에 따라 6~12명 정도 선발하여, 한 장소에 모이게 한 후, 면접자의 진행 아래 조사 목적과 관련된 토론을 함으로써 자료를 수집하는 방법이다.", "answer": "포커스 그룹 인터뷰" },
+                    { "exam": "맥락적 인터뷰는 서비스 과정 가운데 특정 상황이나 맥락에서 이루어지며, 인터뷰를 진행하면서 리서치는 특정 행동을 관찰하고 조사하는 방법이다.", "answer": "맥락적 인터뷰" },
+                    { "exam": "소프트웨어가 특정 조건에서 사용될 때, 명시된 요구와 내재된 요구를 만족하는 기능을 제공하는 소프트웨어 제품의 능력을 말한다.", "answer": "기능성" },
+                    { "exam": "명시된 조건에서 사용될 때, 성능 수준을 유지할 수 있는 소프트웨어 제품의 능력으로 신뢰성의 품질부특성은 성숙성, 결함 허용성, 회복성, 준수성 등이 있다.", "answer": "신뢰성" },
+                    { "exam": "명시된 조건에서 사용될 경우, 사용자에 의해 이해되고 학습되고 사용되고 선호될 수 있는 소프트웨어 제품의 능력을 말한다. 사용성의 품질부특성은 이해성, 학습성, 운용성, 친밀성, 준수성 등이 있다.", "answer": "사용성" },
+                    { "exam": "명시된 조건에서 사용되는 자원의 양에 따라 요구된 성능을 제공하는 소프트웨어 제품의 능력을 말하며 효율성의 품질부특성은 시간반응성, 자원 효율성, 준수성 등이 있다.", "answer": "효율성" },
+                    { "exam": "한 환경에서 다른 환경으로 전이될 수 있는 소프트웨어 제품의 능력을 말한다. 이식성의 품질부특성은 적응성, 설치성, 공존성, 대체성, 준수성 등 이 있다.", "answer": "이식성" },
+                    { "exam": "소프트웨어 제품이 변경되는 능력, 변경에는 환경과 요구사항 및 기능적 명세에 따른 소프트웨어의 수정, 개선, 혹은 개작 등이 포함된다.", "answer": "유지보수성" }
+                ]
+            },
+            {
+                "chapter": "화면 구현",
+                "exams": [
+                    { "exam": "사용자가 하드웨어나 시스템에 연결되는 과정에서 사용자의 편리성과 가동성을 높여 주기 위한 기술", "answer": "UI" },
+                    { "exam": "UI와 비슷하지만 사용자들의 특성을 객관적 자료 및 통계를 바탕으로 면밀하게 분석하여 사용자의 불편함을 최소화하기 위해 만들 기술", "answer": "UX" },
+                    { "exam": "사용자와 시스템이 상호 작용을 하는 방식으로 텍스트 형태로 표현", "answer": "CLI" },
+                    { "exam": "사용자가 컴퓨터의 자원을 사용할 수 있도록 구성요소들이 그래픽 형태로 표현", "answer": "GUI" },
+                    { "exam": "사용자의 몸짓, 말소리로 사용할 수 있는 인터페이스", "answer": "NUI" },
+                    { "exam": "프로그램을 개발하게 되었는지 목적을 분석하는것", "answer": "요구사항분석" },
+                    { "exam": "사용자가 업무를 쉽고 편리하게 수행하는 것에 의미를 둔다.", "answer": "사용성" },
+                    { "exam": "사용자가 업무를 수행하는 데 있어 얼마나 정확하게 수행할 수 있는지를 나타내는 것이다.", "answer": "유용성" },
+                    { "exam": "처리 내용이나 메뉴의 구조를 표현함 있어 사이트의 구조를 파악할 수 있도록 하는 것이다.", "answer": "정보구조" },
+                    { "exam": "사용자가 직관적으로 자신이 찾고 있는 정보를 쉽게 찾을 수 있도록 설계 한다.", "answer": "내비게이션" },
+                    { "exam": "사용자가 원하는 목표를 위하여 시스템에서 수행해야 하는 내용을 기술한다.", "answer": "유스케이스" },
+                    { "exam": "웹에서 사용되는 기술이나 규칙을 의미하며 웹 사이트를 작성할 때 이용하는 HTML, CSS, JavaScript 등에 대한 규정을 의미한다.", "answer": "웹 표준" },
+                    { "exam": "어떠한 사용자(장애인, 노인 등), 어떠한 기술 환경에서도 사용자가 전문적인 능력 없이 웹 사이트에서 제공하는 모든 정보에 접근할 수 있도록 보장하는 것을 뜻한다.", "answer": "웹 접근성" },
+                    { "exam": "서비스 이용자 단말기의 하드웨어 및 소프트웨어 환경이 다른 경우에도 동등한 서비스를 제공하는 것을 의미한다.", "answer": "웹 호환성" },
+                    { "exam": "클라이언트에게 네트워크를 통해 정보나 서비스를 제공하는 컴퓨터 또는 프로그램을 의미한다.", "answer": "서버" },
+                    { "exam": "네트워크를 통하여 다른 서버 시스템 상의 컴퓨터에 원격 서비스에 접속할 수 있는 응용 프로그램이나 서비스를 클라이언트라고 한다.", "answer": "클라이언트" },
+                    { "exam": "최상위 모듈에서 하위 모듈로 테스트하는 기법으로 실사용 환경과 유사한 테스트이다. S/W의 변경으로 영향을 받게 될 다른 세부적인 기능에 초점을 맞춘다.", "answer": "하향식 테스트" },
+                    { "exam": "최하위 모듈에서 상위 모듈로 테스트하는 기법으로 대형 시스템에서 주로 사용되며, 초기에 병행 작업이 가능하여 테스트가 용이하다.", "answer": "상향식 테스트" },
+                    { "exam": "목적, 평가 내용(항목) 분석, 사용 환경, 사용자 등을 분석한다.", "answer": "계획 수립" },
+                    { "exam": "진행 절차 작성, 테스트 참가자 결정, 테스트 항목의 평가 방향 결정, 다양한 평가 방법으로 설계한다..", "answer": "테스트 설계" },
+                    { "exam": "설계된 진행 절차대로 진행한다.", "answer": "테스트 실행" },
+                    { "exam": "평가에 사용된 데이터를 분류하고 분석하며 결과를 통해 문제점을 분석한 후, 수정에 필요한 의견을 포함하여 보고서를 작성함으로써 피드백을 통해 오류를 수정하도록 한다.", "answer": "결과 보고서 작성" },
+                    { "exam": "해당 페이지의 헤더 영역을 지정하고 주로 로고나 회사명, 사이트 맵, 로그인/회원가입 버튼, 검색 버튼 등이 위치하는 시맨틱 태그는?", "answer": "header" },
+                    { "exam": "본문의 주요 내비게이션(메인 메뉴) 영역을 지정하는 시맨틱 태그는?", "answer": "nav" },
+                    { "exam": "해당 페이지의 콘텐츠 영역을 지정할 때 사용하며 header, footer 태그와 비교에서 영역을 구분 지정할 때 사용하는 시맨틱 태그는?", "answer": "section" },
+                    { "exam": "독립적인 콘텐츠 항목에 대한 영역을 지정할 때 사용하는 시맨틱 태그는?", "answer": "article" },
+                    { "exam": "본문 내용 이외에 표현하고자 하는 기타 내용의 영역을 지정하거나 서브 메뉴를 표시할 때 사용하는 시맨틱 태그는?", "answer": "aside" },
+                    { "exam": "본문 내용 아래에 위치하며 주로 개인정보 보호정책, 회사 주소 등을 작성할 때 사용하는 시맨틱 태그는?", "answer": "footer" },
+                    { "exam": "웹 페이지 전체의 일관성을 유지할 수 있도록 스타일(색상, 글꼴, 크기 등)을 미리 저장해 둔 시트는?", "answer": "CSS" },
+                    { "exam": "<body> 태그에서 사용되며 해당 페이지와 해당 페이지에 연결된 외부 내용들이 완전히 로딩되었을 때 구동하는 핸들러는?", "answer": "onload" }
+                ]
+            },
+            {
+                "chapter": "프로그래밍 언어 활용",
+                "exams": [
+                    { "exam": "컴퓨터에 데이터를 삽입, 삭제, 수정하게 해주는 논리적인 공간 구조를 의미한다.", "answer": "자료구조" },
+                    { "exam": "자료들 사이의 선 후 관계가 일대일인 구조 (연결 자료 구조, 순차 자료 구조, 스택, 큐, 덱)", "answer": "선형구조" },
+                    { "exam": "자료들 사이의 선후 관계 계층 또는 그물 형태를 가지는 구조 (트리, 그래프 등)", "answer": "비선형구조" },
+                    { "exam": "어떤 값을 주기억 장치에 기억하기 위해서 사용하는 공간", "answer": "변수" },
+                    { "exam": "프로그램의 구성 요소를 구별하기 위한 기준, 변수명이 식별자에 속함.", "answer": "식별자" },
+                    { "exam": "변수와 변수에 관련된 속성을 연결하는 과정으로, 정적 바인딩과 동적 바인딩으로 구분", "answer": "바인딩" },
+                    { "exam": "변수에 이름, 데이터타입 등의 속성을 부여하는 작업으로, 명시적 선언과 묵시적 선언으로 구분", "answer": "선언" },
+                    { "exam": "나열된 여러개의 문자를 저장하고자 할 때 사용", "answer": "문자열 타입" },
+                    { "exam": "정수값을 저장하고자 할 때 사용", "answer": "Integer 타입" },
+                    { "exam": "소수점을 포함하는 실수값을 저장하고자 할 때 사용", "answer": "Float 타입" },
+                    { "exam": "여러 데이터를 하나로 묶어서 저장하고자 할 때 사용", "answer": "배열 타입" },
+                    { "exam": "조건이 참인지 거짓인지에 따라 경로를 선택", "answer": "if" },
+                    { "exam": "조건에 따라 여러 개의 경로 중 하나를 취하고자 할때 사용한다.", "answer": "Switch" },
+                    { "exam": "수식이 거짓이 될 때 까지 해당 문장을 반복해서 실행", "answer": "While" },
+                    { "exam": "시작과 종료 조건을 지정하여 참인 동안 해당 문장을 반복하여 실행", "answer": "for" },
+                    { "exam": "복잡한 문제의 본질을 이해하기 위해 세부 사항은 배제하고 중요한 부분을 중심으로 간략화 하는 기법", "answer": "추상화" },
+                    { "exam": "상위 수준 그룹의 모든 특성을 하위 수준 그룹이 이어받아 재사용/확장 (단일 상속과 다중 상속이 있다.)", "answer": "상속" },
+                    { "exam": "기계가 이해할 수 있도록 만들어진 기계어 (예 : 어셈블리어)", "answer": "저급 언어" },
+                    { "exam": "개발자가 소스코드를 제작할 때 쉽게 이해할 수 있도록 작성된 언어 (예 : C, C++, Java 등 )", "answer": "고급 언어" },
+                    { "exam": "명령어들이 순차적으로 실행되는 프로그래밍 언어 (예 : FORTRAN, COBOL, PASCAL,C)", "answer": "절차지향 언어" },
+                    { "exam": "수학적 수식과 같은 함수들로 프로그래밍을 구성해 호출 (예 : LISP)", "answer": "함수형 언어" },
+                    { "exam": "규칙에 대한 활성화 조건이 만족되면 연관된 규칙이 실행 (예 : PROLONG)", "answer": "논리형 언어" },
+                    { "exam": "객체 간의 메시지 통신을 이용해 프로그래밍 (예 : JAVA, C++)", "answer": "객체지향 언어" },
+                    { "exam": "고급언어 -> 기계어로 번역, 실행 속도가 높은 장점 (예 : FORTAN, PASCAL, C, C++)", "answer": "컴파일 언어" },
+                    { "exam": "고급언어 명령문을 하나씩 번역하고 실행하는 방식의 언어, 프로그램 실행시 계산 ", "answer": "인터프리터 언어" },
+                    { "exam": "고급어를 컴파일 하여 중간언어로 변환한 후 인터프리터에 의해 번역을 실행하는 방식의 언어 (예 : JAVA)", "answer": "혼합형 언어" },
+                    { "exam": "필요할 때 찾아서 사용할수 있도록 모듈화 되어 제공되는 프로그램", "answer": "라이브러리" }
+                ]
+            },
+            {
+                "chapter": "SQL 활용",
+                "exams": [
+                    { "exam": "DBMS 특성과 구현 환경을 감안한 데이터 구조는?", "answer": "스키마" },
+                    { "exam": "?은 속성이 가질 수 있는 값의 범위이고, 테이블은 데이터 저장 공간이다.", "answer": "도메인" },
+                    { "exam": "하나 이상의 물리 테이블에서 유도되는 가상의 논리 테이블은?", "answer": "뷰" },
+                    { "exam": "데이터베이스 오브젝트를 생성하는 명령어는 CREATE, 데이터베이스 오브젝트를 변경하는 명령어는 ?, 데이터베이스 오브젝트를 삭제하는 명령어는 DROP이다.", "answer": "ALTER" },
+                    { "exam": "제약 조건 중 다른 테이블에서 키값을 참조하는 것은?", "answer": "FOREIGN KEY" },
+                    { "exam": "INSERT는 테이블 내용을 삽입, SELECT는 테이블의 내용을 조회, ?는 테이블의 내용을 변경, DELETE는 테이블 내용을 삭제한다.", "answer": "UPDATE" },
+                    { "exam": "안전한 거래 보장으로 동시에 다수의 작업을 독립적으로 안전하게 처리하기 위한 상호 작용 단위는?", "answer": "트랜잭션" },
+                    { "exam": "?는 사용자 권한을 부여, REVOKE는 사용자 권한을 회수, COMMIT은 트랜잭션을 확정, ROLLBACK은 트랜잭션을 취소하는 명령어이다.", "answer": "GRANT" },
+                    { "exam": "사용자는 조회만 가능하며, 변경 권한은 시스템이 가지는 데이터베이스 데이터를 제외한 모든 정보가 있는 것은?", "answer": "데이터 사전" },
+                    { "exam": "데이터베이스 관리 데이터 종류에는 저장 매체에 저장된 저장 데이터, 중복이 최소화된 ?, 여러 프로그램이 공동으로 사용하는 공유 데이터, 조직의 목적에 필요한 운영 데이터가 있다.", "answer": "통합 데이터" },
+                    { "exam": "데이터를 빠르게 찾을 수 있는 수단으로서, 테이블에 대한 조회 속도를 높여 주는 자료 구조는?", "answer": "인덱스" },
+                    { "exam": "공통의 존재하는 필드 값이 없어도 NULL값으로 두 테이블을 하나로 합치는 조인은?", "answer": "외부조인" },
+                    { "exam": "테이블의 값을 내림차순 또는 오름차순으로 정렬하여 검색하는 명령어는?", "answer": "ORDER BY" },
+                    { "exam": "UNION은 SQL문 결과에 대한 합집합(중복 제거), ?은 SQL문 결과에 대한 합집합(중복 제거 X), INTERSECTION은 SQL문 결과에 대한 교집합(중복 제거)이다.", "answer": "UNION ALL" }
+                ]
+            },
+            {
+                "chapter": "애플리케이션 테스트 수행",
+                "exams": [
+                    { "exam": "작은 소프트웨어 단위(컴포넌트 또는 모듈)를 테스트하는 것으로서, 일반적으로 개발자 자신에 의해 행해진다.", "answer": "단위 테스트" },
+                    { "exam": "모듈 사이의 인터페이스, 통합된 컴포넌트 간의 상호 작용을 테스트하는 것으로, 하나의 프로세스가 완성된 경우 부분적으로 통합 테스트를 수행하는 경우도 있다.", "answer": "통합 테스트" },
+                    { "exam": "통합된 단위 시스템의 기능이 컴퓨터 시스템에서 정상적으로 수행되는지를 테스트하는 것으로 성능 및 장애 테스트가 여기에 포함된다.", "answer": "시스템 테스트" },
+                    { "exam": "일반적으로 최종 사용자와 업무에 따른 이해관계자 등이 테스트를 수행함으로써 개발된 제품에 대해 운영 여부를 결정하는 테스트로, 실제 업무 적용 전에 수행한다.", "answer": "인수 테스트" },
+                    { "exam": "결함관리 계획은 전체 프로세스에서 결함관리에 대한 일정, 인력, 업무 프로세스를 확보하여 계획을수립하는 것을 말한다.", "answer": "결함관리 계획" },
+                    { "exam": "테스터는 발견된 결함에 대한 정보를 결함관리 DB에 기록한다.", "answer": "결함 기록" },
+                    { "exam": "등록된 결함에 있어서 주요 내용을 검토하고, 결함을 수정할 개발자에게 전달한다.", "answer": "결함 검토" },
+                    { "exam": "개발자는 할당된 결함의 프로그램을 수정한다.", "answer": "결함 수정" },
+                    { "exam": "테스터는 개발자가 수정한 내용을 확인하고 다시 테스트를 수행한다.", "answer": "결함 재확인" },
+                    { "exam": "결함관리 팀장은 결함관리 데이터베이스를 이용하여 게시판 형태의 서비스를 제공한다.", "answer": "결함 상태 추적 및 모니터링 활동" },
+                    { "exam": "발견된 결함에 대한 내용과 이해관계자들의 의견이 반영된 보고서를 작성하고 결함관리를 종료한다.", "answer": "최종 결함 분석 및 보고서 작성" },
+                    { "exam": "결함이 처음 발견되어 등록되었지만 분석이 되지 않은 상태는?", "answer": "결함 등록" },
+                    { "exam": "수정이 필요한 결함이지만 현재 수정이 불가능해서 연기된 상태로 우선순위, 일정 등을 고려하여 재오픈을 준비하는 상태는?", "answer": "결함 조치 보류" },
+                    { "exam": "비정상적인 종료/중단, 응답 시간 지연, 데이터베이스 에러 등 주로 애플리케이션 환경과 데이터베이스 처리에서 발생하는 결함은?", "answer": "시스템 결함" },
+                    { "exam": "사용자의 요구사항 미반영/불일치, 부정확한 비즈니스 프로세스, 스크립트 에러, 타 시스템 연동 시 오류 등 기획, 설계, 업무 시나리오 단계에서 발생된 결함은?", "answer": "기능 결함" },
+                    { "exam": "응용 프로그램의 UI 비일관성, 부정확한 커서/메시지, 데이터 타입의 표시 오류 등으로 사용자 화면 설계에서 발생된 결함은?", "answer": "GUI 결함" },
+                    { "exam": "기획자, 사용자, 개발자 간의 의사소통과 기록이 원활하지 않아 발생하며 사용자 온/오프라인 매뉴얼 불일치, 요구사항 분석서와 기능 요구사항의 불일치로 인한 불완전 상태의 문서 결함은?", "answer": "문서 결함" },
+                    { "exam": "소프트웨어 개발 또는 유지 보수 수행 중에 발생한 부정확한 결과는? (오타, 개발 명세서의 잘못된 이해, 서브루틴 기능 오해 등)", "answer": "에러" },
+                    { "exam": "프로그램 코드상에 존재하는 것으로 비정상적인 프로그램과 정상적인 프로그램 버전 간의 차이로 인해 발생하며, 잘못된 연산자가 사용된 경우 프로그램이 서브루틴으로부터의 에러 리턴을 점검하는 코드가 누락된 것은?", "answer": "오류" },
+                    { "exam": "정상적인 프로그램과 비정상적인 프로그램의 실행 결과의 차이를 의미하며, 프로그램 실행 중 프로그램의 실제 실행 결과를 예상 결과와 비교하며 발견하는 것은?", "answer": "실패" },
+                    { "exam": "버그, 에러, 오류, 실패, 프로그램 실행에 대한 문제점, 프로그램 개선 사항 등 전체를 포괄하는 용어는?", "answer": "결함" }
+                ]
+            },
+            {
+                "chapter": "애플리케이션 테스트 배포",
+                "exams": [
+                    { "exam": "한번에 기계어로 변환하기 때문에 컴파일(번역) 시간이 오래 걸리지만 번역 후 프로그램 속도가 빠르고, 보안이 우수하다.", "answer": "컴파일 언어" },
+                    { "exam": "컴파일의 결과물이 실행파일이 아닌 'class'라는 바이트 코드로 파일을 생성하여 가상 실행환경인 JRE, CLI에서 한 줄씩 실행하는 방식이다.", "answer": "Byte Code 언어" },
+                    { "exam": "한줄씩 기계어로 번역하기 때문에 메모리를 적게 소모되어 컴파일(번역) 시간은 빠르지만 필요할 때 마다 번역을 해야 하기 때문에 프로그램 속도는 떨어진다.", "answer": "인터프리터 언어" },
+                    { "exam": "사용자의 요청자료(정적인 데이터 : html, 그림, 동영상 등)의 결과값을 빠르고 안정적으로 처리하여 제공한다.", "answer": "웹 서버" },
+                    { "exam": "사용자의 요청자료(동적인 데이터 : 연산, 테이블 검색, 삽입, 삭제 등)의 결과값을 빠르게 안정적으로 처리하여 제공한다.", "answer": "WAS" },
+                    { "exam": "java 라이브러리, 리소스, property 파일들을 포함한다. 프로그램에서 참조하는 라이브러리, 구현된 비즈니스 서비스를 배포할 때 jar 단위로 패키징하여 배포한다.", "answer": "JAR" },
+                    { "exam": "웹 켄테이너에 배포되는 배포 형식으로 Servlet, jar 파일과 WEB-INF 폴더에 있는 web.xml 파일로 구성된다. 웹 켄테이너상에 배포되어 독립적인 UI 및 웹 애플리케이션 서비스를 제공할 수 있다.", "answer": "WAR" },
+                    { "exam": "jar와 war을 묶어서 하나의 완성된 웹 애플리케이션 서비스를 제공할 수 있다.", "answer": "EAR" },
+                    { "exam": "형상관리(configuration management)는 형상항목을 식별하여 그 기능적, 물리적 특성을 문서화하고, 그러한 특성의 변경, 제어, 처리 상태를 기록 및 보고하면서 명시된 요구사항에 부합하는지 확인 및 감독하는 활동을 의미한다.", "answer": "형상관리 시스템" },
+                    { "exam": "테스트하기 전에 코딩오류, 성능저하, 보안 취약점 등의 결함을 조기에 발견할 수 있도록 지원한다. 이렇게 하여 프로그램 생산성 향상과 품질향상에 필요한 관리 시스템을 구축한다.", "answer": "정적 테스트 도구" },
+                    { "exam": "테스트 미수행 코드를 확인 및 코드구조가 충분히 테스트 되었는지 확인하여 애플리케이션의 안정성을 높이기 위한 관리 시스템을 구축한다.", "answer": "동적 테스트 도구" }
+                ]
+            }
+        ];
+
+        // --- 상태 관리 ---
+        let currentChapterIndex = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let currentExams = [];
+
+        // --- DOM 요소 ---
+        const chapterSelectionScreen = document.getElementById('chapter-selection-screen');
+        const chapterList = document.getElementById('chapter-list');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const quizHeaderTitle = document.getElementById('quiz-header-title');
+        const progressText = document.getElementById('progress-text');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const feedbackText = document.getElementById('feedback-text');
+        const nextQuestionBtn = document.getElementById('next-question-btn');
+        const scoreText = document.getElementById('score-text');
+        const backToChaptersBtn = document.getElementById('back-to-chapters-btn');
+        const restartQuizBtn = document.getElementById('restart-quiz-btn');
+        const goToChaptersBtn = document.getElementById('go-to-chapters-btn');
+        
+        // --- 함수 ---
+
+        /** 모든 화면을 숨기고 단원 선택 화면만 표시 */
+        function showChapterSelection() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
+            chapterSelectionScreen.classList.remove('hidden');
+        }
+
+        /** 단원 목록을 동적으로 생성 */
+        function populateChapters() {
+            chapterList.innerHTML = '';
+            quizData.forEach((chapterData, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'chapter-btn w-full p-6 bg-slate-50 text-left rounded-lg border-2 border-slate-200 hover:border-indigo-400';
+                btn.innerHTML = `<h3 class="text-lg font-bold text-slate-800">${chapterData.chapter}</h3><p class="text-sm text-slate-500">${chapterData.exams.length} 문제</p>`;
+                btn.onclick = () => startQuiz(index);
+                chapterList.appendChild(btn);
+            });
+        }
+
+        /** 퀴즈 시작 */
+        function startQuiz(chapterIndex) {
+            currentChapterIndex = chapterIndex;
+            currentExams = shuffleArray([...quizData[chapterIndex].exams]);
+            currentQuestionIndex = 0;
+            score = 0;
+
+            chapterSelectionScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+
+            quizHeaderTitle.textContent = quizData[chapterIndex].chapter;
+            loadQuestion();
+        }
+
+        /** 문제 로드 */
+        function loadQuestion() {
+            // 초기화
+            optionsContainer.innerHTML = '';
+            feedbackText.textContent = '';
+            nextQuestionBtn.classList.add('hidden');
+
+            const questionData = currentExams[currentQuestionIndex];
+            
+            progressText.textContent = `문제 ${currentQuestionIndex + 1} / ${currentExams.length}`;
+            questionText.textContent = questionData.exam;
+
+            // 보기 생성
+            const options = generateOptions(questionData.answer);
+            options.forEach(optionText => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full p-4 bg-white text-left rounded-lg border-slate-300 hover:bg-slate-50';
+                btn.textContent = optionText;
+                btn.onclick = (e) => selectAnswer(e.target, questionData.answer);
+                optionsContainer.appendChild(btn);
+            });
+        }
+        
+        /** 정답을 포함한 보기 4개 생성 (오답은 랜덤 선택) */
+        function generateOptions(correctAnswer) {
+            let options = [correctAnswer];
+            const allAnswers = quizData.flatMap(ch => ch.exams.map(ex => ex.answer));
+            const wrongAnswers = allAnswers.filter(ans => ans !== correctAnswer && ans.length < 20); // 너무 긴 답변은 제외
+            const uniqueWrongAnswers = [...new Set(wrongAnswers)];
+            
+            while (options.length < 4 && uniqueWrongAnswers.length > 0) {
+                const randomIndex = Math.floor(Math.random() * uniqueWrongAnswers.length);
+                options.push(uniqueWrongAnswers.splice(randomIndex, 1)[0]);
+            }
+            return shuffleArray(options);
+        }
+        
+        /** 배열 섞기 (Fisher-Yates shuffle) */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        /** 답안 선택 시 처리 */
+        function selectAnswer(selectedButton, correctAnswer) {
+            const buttons = optionsContainer.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                btn.classList.add('disabled'); // 모든 버튼 비활성화
+                if (btn.textContent === correctAnswer) {
+                    btn.classList.add('correct');
+                }
+            });
+
+            if (selectedButton.textContent === correctAnswer) {
+                score++;
+                feedbackText.textContent = '정답입니다! 👍';
+                feedbackText.className = 'text-lg font-bold text-green-600 min-h-[28px]';
+            } else {
+                selectedButton.classList.add('incorrect');
+                feedbackText.innerHTML = `오답입니다. <br>정답: <span class="font-bold">${correctAnswer}</span>`;
+                feedbackText.className = 'text-base text-red-600 min-h-[24px]';
+            }
+            nextQuestionBtn.classList.remove('hidden');
+        }
+
+        /** 결과 화면 표시 */
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            const percentage = Math.round((score / currentExams.length) * 100);
+            scoreText.innerHTML = `${score} / ${currentExams.length} <span class="text-2xl ml-2">(${percentage}%)</span>`;
+        }
+
+        // --- 이벤트 리스너 ---
+        nextQuestionBtn.addEventListener('click', () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentExams.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        backToChaptersBtn.addEventListener('click', showChapterSelection);
+        goToChaptersBtn.addEventListener('click', showChapterSelection);
+        restartQuizBtn.addEventListener('click', () => startQuiz(currentChapterIndex));
+        
+        // --- 초기 실행 ---
+        populateChapters();
+
+    </script>
+</body>
+</html>

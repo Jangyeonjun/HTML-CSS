@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-y: scroll;
+        }
+        header {
+            background-color: #343a40;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        nav a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Homepage</h1>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm a web developer with a passion for creating beautiful and functional websites.</p>
+        </section>
+        <section id="services">
+            <h2>Services</h2>
+            <p>I offer web development, design, and consulting services to help you bring your ideas to life.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:email@example.com">email@example.com</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Homepage. All rights reserved.</p>
+    </footer>
+</body>
+</html>
